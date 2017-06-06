@@ -5,10 +5,12 @@ import React, { PropTypes } from 'react';
 import { Text, View } from 'react-native';
 import ExperienceDetailsImage from '../components/experience-details-image';
 
-const ExperienceDetailsContainer = ({imgUrl }) => (
+const villads = require('../../../util/assets/img/Villads_2017.jpg');
+
+const ExperienceDetailsContainer = ({imgUrl}) => (
 		<View style={styles.containingViewStyles}>
 				<ExperienceDetailsImage
-					imgUrl={imgUrl}
+					imgUrl={villads}
 				/>
 			<View>
 				<Text style={styles.textContentStyle}>
@@ -19,8 +21,12 @@ const ExperienceDetailsContainer = ({imgUrl }) => (
 );
 
 ExperienceDetailsContainer.propTypes = {
-	imgUrl: PropTypes.number.isRequired,
+	imgUrl: PropTypes.number,
 };
+
+ExperienceDetailsContainer.defaultProps = {
+	imgUrl: 2,
+}
 
 const styles = {
 	containingViewStyles: {
@@ -31,7 +37,7 @@ const styles = {
 	},
 	imageStyle: {
 		height: 200,
-		width: 500,
+		width: null,
 	},
 	textContentStyle: {
 		fontSize: 16,

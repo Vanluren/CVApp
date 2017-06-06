@@ -5,9 +5,12 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet, Text, TouchableWithoutFeedback } from 'react-native';
 import ElevatedView from 'react-native-elevated-view';
+import {Actions} from 'react-native-router-flux';
 
 const Card = ({ headerText, experienceText }) => (
-		<TouchableWithoutFeedback>
+		<TouchableWithoutFeedback
+			onPress={() => Actions.experienceDetail()}
+		>
 			<ElevatedView
 				elevation={2}
 				style={styles.cardStyles}
@@ -24,8 +27,11 @@ const Card = ({ headerText, experienceText }) => (
 
 Card.propTypes = {
 	headerText: PropTypes.string.isRequired,
-	experienceText: PropTypes.string.isRequired,
+	experienceText: PropTypes.string,
 };
+Card.defaultProps = {
+	experienceText: "",
+}
 
 const styles = StyleSheet.create({
 	cardStyles: {

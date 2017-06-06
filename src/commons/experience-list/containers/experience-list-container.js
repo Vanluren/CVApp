@@ -8,13 +8,15 @@ const ExperienceListContainer = ({children}) => (
 );
 
 ExperienceListContainer.propTypes = {
-	children: PropTypes.element.isRequired,
+	children: PropTypes.arrayOf(
+		PropTypes.element,
+	).isRequired,
 };
 
 const styles = StyleSheet.create({
 	containingView: {
 		flex: 1,
-		marginTop: 20,
+		marginTop: 270,
 	},
 });
 
