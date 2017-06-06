@@ -24,13 +24,11 @@ const scenes = Actions.create(
 				key='career'
 			    title='career'
 			    initial
-			    hideNavBar
 			    component={Career}
 			/>
 			<Scene
 				key='education'
 				title='career'
-				hideNavBar
 				component={Career}
 			/>
 		</Scene>
