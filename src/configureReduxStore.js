@@ -13,7 +13,7 @@ export default function configureStore(middleware) {
 		                    require('remote-redux-devtools').composeWithDevTools)({
 			name: Platform.OS,
 			hostname: 'localhost',
-			port: 8000,
+			port: 8081,
 		});
 	}
 	/* eslint-enable no-underscore-dangle, global-require, no-undef*/
