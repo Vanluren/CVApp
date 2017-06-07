@@ -6,7 +6,8 @@
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"ios": "node node_modules/react-native/local-cli/cli.js run-ios",
 		"android": "node node_modules/react-native/local-cli/cli.js run-android",
-		"postinstall": "remotedev-debugger --injectserver --hostname localhost --port 8000"
+		"postinstall": "remotedev-debugger --injectserver --hostname localhost --port 8000",
+		"lint": "./node_modules/.bin/eslint src/*"
 	},
 	"dependencies": {
 		"axios": "^0.16.2",
@@ -22,7 +23,8 @@
 		"redux": "^3.6.0",
 		"redux-thunk": "^2.2.0",
 		"remote-redux-devtools": "^0.5.11",
-		"remote-redux-devtools-on-debugger": "^0.7.1"
+		"remote-redux-devtools-on-debugger": "^0.7.1",
+		"reselect": "^3.0.1"
 	},
 	"devDependencies": {
 		"babel-eslint": "^7.1.1",
