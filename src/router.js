@@ -5,6 +5,7 @@ import Career from './career/containers/career-container';
 import Hobbies from './hobbies/containers/hobbies-container';
 import Education from './eductation/containers/education-container';
 import ExperienceDetails from './commons/experience-details/containers/experience-details-container';
+
 /**
  * The function that returns the title of the tab in the tab bar.
  * If the selected prop is a truthy, set the color to red, else set it to black
