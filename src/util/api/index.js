@@ -1,13 +1,12 @@
-import axios from 'axios';
+import axiosManager from './axios-manager';
 
-const BASE_URL = 'http://demo0419605.mockable.io/';
-
-const axiosManager = axios.create({
-	baseURL: BASE_URL,
-});
-
+/**
+ * sends a GET request to a mockable api, where the experiences are
+ * contained in an array of objects
+ * @returns {Promise.<*>}
+ */
 export const getExperiencesFromAPI = async () => {
-	const URL_SUFFIX = '/experiences';
-	const responseData = await axiosManager.get(URL_SUFFIX);
-	return responseData;
+	const url = '/experiences';
+	const response = await axiosManager.instance.get(url);
+	return response.data;
 };

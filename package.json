@@ -5,7 +5,8 @@
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"ios": "node node_modules/react-native/local-cli/cli.js run-ios",
-		"android": "node node_modules/react-native/local-cli/cli.js run-android"
+		"android": "node node_modules/react-native/local-cli/cli.js run-android",
+		"postinstall": "remotedev-debugger --injectserver --hostname localhost --port 8000"
 	},
 	"dependencies": {
 		"axios": "^0.16.2",

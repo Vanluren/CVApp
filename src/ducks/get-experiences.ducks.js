@@ -7,7 +7,6 @@ export const addLoadedExperiences = experiences => ({
 	payload: experiences,
 });
 
-//This reducer listens to the action types and changes the state
 const reducer = (state = DEFAULT_STATE, action) => {
 	switch (action.type) {
 		case LOAD_EXPERIENCES: {
