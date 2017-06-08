@@ -1,10 +1,11 @@
 import React from 'react';
 import { Actions, Scene, Router } from 'react-native-router-flux';
 import { Text } from 'react-native';
-import Career from './career/containers/career-container';
-import Hobbies from './hobbies/containers/hobbies-container';
-import Education from './eductation/containers/education-container';
+import HobbiesContainer from './main-view/containers/hobbies-container';
+import EducationContainer from './main-view/containers/education-container';
+import CareerContainer from './main-view/containers/career-container';
 import ExperienceDetails from './commons/experience-details/containers/experience-details-container';
+
 /**
  * The function that returns the title of the tab in the tab bar.
  * If the selected prop is a truthy, set the color to red, else set it to black
@@ -24,7 +25,7 @@ const TabIcon = ({ selected, title }) => (
 const scenes = Actions.create(
 	<Scene
 		key='root'
-		navigationBarStyle={{ backgroundColor: 'grey' }}
+		navigationBarStyle={{ backgroundColor: '#FFFFFF' }}
 	>
 		<Scene
 			key='tabbar'
@@ -49,7 +50,7 @@ const scenes = Actions.create(
 			>
 				<Scene
 					key="career"
-					component={Career}
+					component={CareerContainer}
 					title="Career"
 				/>
 			</Scene>
@@ -61,7 +62,7 @@ const scenes = Actions.create(
 			>
 				<Scene
 					key="education"
-					component={Education}
+					component={EducationContainer}
 					title="Education"
 				/>
 			</Scene>
@@ -73,7 +74,7 @@ const scenes = Actions.create(
 			>
 				<Scene
 					key="hobbies"
-					component={Hobbies}
+					component={HobbiesContainer}
 					title="Hobies"
 				/>
 			</Scene>

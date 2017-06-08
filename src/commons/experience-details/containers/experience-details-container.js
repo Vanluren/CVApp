@@ -1,32 +1,43 @@
+/* eslint-disable react/forbid-prop-types */
 /**
  * Created by villadsvalur on 06/06/2017.
  */
 import React, { PropTypes } from 'react';
 import { Text, View } from 'react-native';
+import { connect } from 'react-redux';
 import ExperienceDetailsImage from '../components/experience-details-image';
 
-const villads = require('../../../util/assets/img/Villads_2017.jpg');
-
-const ExperienceDetailsContainer = ({imgUrl}) => (
+/**
+ * The containing view for the entire experience detail view, passes on the props
+ * from the state, to the child components and the JSX tags
+ * @param experience
+ * @constructor
+ */
+const ExperienceDetailsContainer = ({experience}) => (
 		<View style={styles.containingViewStyles}>
-				<ExperienceDetailsImage
-					imgUrl={villads}
-				/>
+			<ExperienceDetailsImage
+				imgUrl={experience.image}
+			/>
+			<View>
+				<Text style={styles.yearsTextStyling}>
+					Tid: {experience.years}
+				</Text>
+			</View>
 			<View>
 				<Text style={styles.textContentStyle}>
-					I modsætning til hvad mange tror, er Lorem Ipsum ikke bare tilfældig tekst. Det stammer fra et stykke litteratur på latin fra år 45 f.kr., hvilket gør teksten over 2000 år gammel. Richard McClintock, professor i latin fra Hampden-Sydney universitet i Virginia, undersøgte et af de mindst kendte ord "consectetur" fra en del af Lorem Ipsum, og fandt frem til dets oprindelse ved at studere brugen gennem klassisk litteratur. Lorem Ipsum stammer fra afsnittene 1.10.32 og 1.10.33 fra "de Finibus Bonorum et Malorum" (Det gode og ondes ekstremer), som er skrevet af Cicero i år 45 f.kr. Bogen, som var meget populær i renæssancen, er en afhandling om etik. Den første linie af Lorem Ipsum "Lorem ipsum dolor sit amet..." kommer fra en linje i afsnit 1.10.32.
+					{experience.description}
 				</Text>
 			</View>
 		</View>
 );
 
 ExperienceDetailsContainer.propTypes = {
-	imgUrl: PropTypes.number,
+	experience: PropTypes.object,
 };
 
 ExperienceDetailsContainer.defaultProps = {
-	imgUrl: 2,
-}
+	experience: {}
+};
 
 const styles = {
 	containingViewStyles: {
@@ -43,6 +54,16 @@ const styles = {
 		fontSize: 16,
 		marginVertical: 20,
 		marginHorizontal: 20,
+	},
+	yearsTextStyling: {
+		fontSize: 14,
+		marginTop: 20,
+		fontWeight: '500',
 	}
+};
+
+function mapStateToProps(state) {
+	const experience = state.currentlySelectedExperience;
+	return { experience };
 }
-export default ExperienceDetailsContainer;
+export default connect(mapStateToProps)(ExperienceDetailsContainer);
