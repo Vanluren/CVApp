@@ -47,7 +47,7 @@ const ExperienceListContainer = ({isLoading, experiences}) => {
 			{checkLoadingState()}
 		</View>
 	);
-}
+};
 
 /**
  * This method takes an array of experiences, and renders the list containing the individual experience

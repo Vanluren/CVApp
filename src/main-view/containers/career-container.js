@@ -23,7 +23,7 @@ CareerContainer.propTypes = {
 
 CareerContainer.defaultProp = {
 	careerExperiences: [{},{}],
-}
+};
 
 export default connect(getCategoryProps)(CareerContainer);
 

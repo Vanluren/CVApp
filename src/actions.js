@@ -15,4 +15,4 @@ export const getExperiences = () => async dispatch => {
 	dispatch(addLoadedExperiences(experiences));
 	
 	dispatch(setIsLoading(false));
-}
+};

@@ -37,7 +37,7 @@ ExperienceDetailsContainer.propTypes = {
 
 ExperienceDetailsContainer.defaultProps = {
 	experience: {}
-}
+};
 
 const styles = {
 	containingViewStyles: {
@@ -60,7 +60,7 @@ const styles = {
 		marginTop: 20,
 		fontWeight: '500',
 	}
-}
+};
 
 function mapStateToProps(state) {
 	const experience = state.currentlySelectedExperience;

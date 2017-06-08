@@ -51,7 +51,7 @@ Card.propTypes = {
 };
 Card.defaultProps = {
 	experienceText: "",
-}
+};
 
 const styles = StyleSheet.create({
 	cardStyles: {

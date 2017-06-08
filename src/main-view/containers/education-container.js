@@ -21,6 +21,6 @@ EducationContainer.propTypes = {
 };
 EducationContainer.defaultProps = {
 	educationExperiences: [],
-}
+};
 export default connect(getCategoryProps)(EducationContainer);
 
