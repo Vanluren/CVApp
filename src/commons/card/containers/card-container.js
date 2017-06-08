@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /**
  * Add card styling to dashboard components
  * Wrap each dashboard component in this component, when adding them to the dashboard
@@ -10,12 +11,20 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { selectExperience } from '../ducks/card.ducks';
 
-const Card = (props) => (
+/**
+ * A card component for use in our main-view
+ * @param actions
+ * @param experience
+ * @param headerText
+ * @param experienceText
+ * @constructor
+ */
+const Card = ({actions, experience, headerText, experienceText}) => (
 		<TouchableWithoutFeedback
 			onPress={
 				()=>{
-					props.actions.selectExperience(props.experience)
-					Actions.experienceDetail({title: props.headerText})
+					actions.selectExperience(experience)
+					Actions.experienceDetail({title: headerText})
 				}
 			}
 		>
@@ -23,11 +32,11 @@ const Card = (props) => (
 				elevation={2}
 				style={styles.cardStyles}
 			>
-				<Text style={styles.headerText}>{props.headerText}</Text>
+				<Text style={styles.headerText}>{headerText}</Text>
 				<Text
 					style={styles.cardTextStyles}
 				>
-					{props.experienceText}
+					{experienceText}
 				</Text>
 			</ElevatedView>
 		</TouchableWithoutFeedback>
@@ -36,6 +45,7 @@ const Card = (props) => (
 
 Card.propTypes = {
 	actions: PropTypes.object.isRequired,
+	experience: PropTypes.object.isRequired,
 	headerText: PropTypes.string.isRequired,
 	experienceText: PropTypes.string,
 };

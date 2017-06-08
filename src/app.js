@@ -11,6 +11,7 @@ import { getExperiences } from './actions';
 const middleware = [thunk];
 const store = configureStore(middleware);
 
+//Fires the action which gets our experiences from our server
 store.dispatch(getExperiences());
 
 class App extends Component {

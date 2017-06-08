@@ -1,7 +1,7 @@
 import axiosManager from './axios-manager';
 
 /**
- * sends a GET request to a mockable api, where the experiences are
+ * Sends a GET request to a mockable api, where the experiences are
  * contained in an array of objects
  * @returns {Promise.<*>}
  */

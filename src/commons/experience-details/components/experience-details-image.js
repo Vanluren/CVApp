@@ -1,6 +1,12 @@
 import React, { PropTypes } from 'react';
 import { Image } from 'react-native';
 
+/**
+ * Small component for the experience detail view, that spits out an image for the top of the view
+ * takes the imgUrl as a prop, and uses it for the image source
+ * @param imgUrl
+ * @constructor
+ */
 const ExperienceDetailsImage = ({imgUrl}) => (
 		<Image
 			style={styles.imageStyles}
@@ -9,7 +15,7 @@ const ExperienceDetailsImage = ({imgUrl}) => (
 );
 
 ExperienceDetailsImage.propTypes = {
-	imgUrl: PropTypes.number.isRequired,
+	imgUrl: PropTypes.string.isRequired,
 };
 const styles = {
 	imageStyles: {

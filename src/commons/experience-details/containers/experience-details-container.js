@@ -7,28 +7,37 @@ import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import ExperienceDetailsImage from '../components/experience-details-image';
 
-const ExperienceDetailsContainer = (props) => (
+/**
+ * The containing view for the entire experience detail view, passes on the props
+ * from the state, to the child components and the JSX tags
+ * @param experience
+ * @constructor
+ */
+const ExperienceDetailsContainer = ({experience}) => (
 		<View style={styles.containingViewStyles}>
 			<ExperienceDetailsImage
-				imgUrl={props.experience.image}
+				imgUrl={experience.image}
 			/>
 			<View>
 				<Text style={styles.yearsTextStyling}>
-					Tid: {props.experience.years}
+					Tid: {experience.years}
 				</Text>
 			</View>
 			<View>
 				<Text style={styles.textContentStyle}>
-					{props.experience.description}
+					{experience.description}
 				</Text>
 			</View>
 		</View>
 );
 
 ExperienceDetailsContainer.propTypes = {
-	image: PropTypes.string.isRequired,
-	experience: PropTypes.object.isRequired,
+	experience: PropTypes.object,
 };
+
+ExperienceDetailsContainer.defaultProps = {
+	experience: {}
+}
 
 const styles = {
 	containingViewStyles: {
@@ -52,6 +61,7 @@ const styles = {
 		fontWeight: '500',
 	}
 }
+
 function mapStateToProps(state) {
 	const experience = state.currentlySelectedExperience;
 	return { experience };

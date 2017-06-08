@@ -1,7 +1,10 @@
 const LOAD_EXPERIENCES = 'LOAD_EXPERIENCES';
-
 const DEFAULT_STATE = {};
 
+/**
+ * A general action and reducer pair for loading the fetched experiences into the state object
+ * @param experiences
+ */
 export const addLoadedExperiences = experiences => ({
 	type: LOAD_EXPERIENCES,
 	payload: experiences,

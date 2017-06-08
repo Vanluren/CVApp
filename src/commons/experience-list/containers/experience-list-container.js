@@ -12,13 +12,22 @@ import TopBanner from '../../../top-banner/containers/top-banner-container';
 import { getCategoryProps } from '../../../selectors';
 import Card from '../../card/containers/card-container';
 
-
-
+/**
+ * The list container for all of the cards in the category views
+ * takes the isLoading prod to check if the loading spinner should be shown
+ * passes on the experience object to child components
+ * @param isLoading
+ * @param experiences
+ * @returns {XML}
+ * @constructor
+ */
 const ExperienceListContainer = ({isLoading, experiences}) => {
 	const checkLoadingState = () => {
 		if(!isLoading){
+			//if is loading isn't a truthy, execute the method that renders the card list
 			return renderCards(experiences);
 		}
+		//else it should show the loading spinner
 		return (
 			<View
 				style={{
@@ -40,7 +49,13 @@ const ExperienceListContainer = ({isLoading, experiences}) => {
 	);
 }
 
+/**
+ * This method takes an array of experiences, and renders the list containing the individual experience
+ * cards.
+ * @param fetchedExperiences
+ */
 function renderCards(fetchedExperiences) {
+	//each card is passed each individual experience object for use in the card container
 	const cardsInList = _.map(fetchedExperiences, experience => (
 		<Card
 			key={experience.name}
@@ -49,6 +64,7 @@ function renderCards(fetchedExperiences) {
 		/>
 	));
 	
+	//Retruns a scrollview containing the list, for use in the components final render method
 	return(
 		<ScrollView
 			style={{marginTop: 50,}}
