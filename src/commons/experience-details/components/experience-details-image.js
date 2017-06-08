@@ -4,7 +4,7 @@ import { Image } from 'react-native';
 const ExperienceDetailsImage = ({imgUrl}) => (
 		<Image
 			style={styles.imageStyles}
-			source={imgUrl}
+			source={{uri: imgUrl}}
 		/>
 );
 

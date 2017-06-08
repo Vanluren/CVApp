@@ -5,19 +5,19 @@
  * @constructor
  */
 import React, {PropTypes} from 'react';
+import  _ from 'lodash';
 import { StyleSheet, ScrollView, View, ActivityIndicator } from 'react-native';
-import TopBanner from '../../../top-banner/containers/top-banner-container';
-import { getMainViewProps } from '../../../selectors';
 import { connect } from 'react-redux';
+import TopBanner from '../../../top-banner/containers/top-banner-container';
+import { getCategoryProps } from '../../../selectors';
+import Card from '../../card/containers/card-container';
 
-const ExperienceListContainer = ({isLoading, children}) => {
+
+
+const ExperienceListContainer = ({isLoading, experiences}) => {
 	const checkLoadingState = () => {
 		if(!isLoading){
-			return(
-				<ScrollView style={{marginTop: 50,}} >
-					{children}
-				</ScrollView>
-			);
+			return renderCards(experiences);
 		}
 		return (
 			<View
@@ -40,12 +40,35 @@ const ExperienceListContainer = ({isLoading, children}) => {
 	);
 }
 
+function renderCards(fetchedExperiences) {
+	const cardsInList = _.map(fetchedExperiences, experience => (
+		<Card
+			key={experience.name}
+			headerText={experience.name}
+		    experience={experience}
+		/>
+	));
+	
+	return(
+		<ScrollView
+			style={{marginTop: 50,}}
+			overScrollMode="auto"
+			showsVerticalScrollIndicator={false}
+		>
+			{cardsInList}
+		</ScrollView>
+	);
+};
+
 ExperienceListContainer.propTypes = {
 	isLoading: PropTypes.bool.isRequired,
-	children: PropTypes.arrayOf(
-		PropTypes.element,
-	).isRequired,
+	experiences: PropTypes.arrayOf(
+		PropTypes.object,
+	),
 };
+ExperienceListContainer.defaultProps = {
+	experiences: [],
+}
 
 const styles = StyleSheet.create({
 	containingView: {
@@ -54,5 +77,5 @@ const styles = StyleSheet.create({
 });
 
 
-export default connect(getMainViewProps)(ExperienceListContainer);
+export default connect(getCategoryProps)(ExperienceListContainer);
 

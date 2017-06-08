@@ -6,26 +6,36 @@ import React, { PropTypes } from 'react';
 import { StyleSheet, Text, TouchableWithoutFeedback } from 'react-native';
 import ElevatedView from 'react-native-elevated-view';
 import {Actions} from 'react-native-router-flux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { selectExperience } from '../ducks/card.ducks';
 
-const Card = ({ headerText, experienceText }) => (
+const Card = (props) => (
 		<TouchableWithoutFeedback
-			onPress={() => Actions.experienceDetail()}
+			onPress={
+				()=>{
+					props.actions.selectExperience(props.experience)
+					Actions.experienceDetail({title: props.headerText})
+				}
+			}
 		>
 			<ElevatedView
 				elevation={2}
 				style={styles.cardStyles}
 			>
-				<Text style={styles.headerText}>{headerText}</Text>
+				<Text style={styles.headerText}>{props.headerText}</Text>
 				<Text
 					style={styles.cardTextStyles}
 				>
-					{experienceText}
+					{props.experienceText}
 				</Text>
 			</ElevatedView>
 		</TouchableWithoutFeedback>
 	);
 
+
 Card.propTypes = {
+	actions: PropTypes.object.isRequired,
 	headerText: PropTypes.string.isRequired,
 	experienceText: PropTypes.string,
 };
@@ -54,4 +64,15 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default Card;
+function mapStateToProps(state) {
+	return state;
+}
+function mapDispatchToProps(dispatch) {
+	const actionCreators = {
+		selectExperience,
+	};
+	return {
+		actions: bindActionCreators(actionCreators, dispatch),
+	};
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Card);

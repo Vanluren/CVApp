@@ -1,4 +1,4 @@
-const DEFAULT_STATE = true;
+const DEFAULT_STATE = false;
 const IS_LOADING_STATUS_CHANGE = 'IS_LOADING_STATUS_CHANGE';
 
 export const setIsLoading = payload => ({
