@@ -1,10 +1,14 @@
-/**
- * Created by villadsvalur on 05/06/2017.
- */
 import { Platform } from 'react-native';
 import { createStore, applyMiddleware, compose } from 'redux';
 import reducer from './reducers';
 
+/**
+ * This configuration generally is for development puposes only. But it sets tools and rules for
+ * starting the remote-redux-devtools as we fire up our dev enviornment, and adds enhancers for a
+ * better experience.
+ * @param middleware
+ * @returns {*}
+ */
 export default function configureStore(middleware) {
 	// https://github.com/jhen0409/react-native-boilerplate/blob/master/src/configureStore.js
 	
@@ -35,3 +39,4 @@ export default function configureStore(middleware) {
 	
 	return store;
 }
+

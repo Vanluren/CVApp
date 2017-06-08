@@ -1,17 +1,28 @@
 /**
  * Created by villadsvalur on 05/06/2017.
  */
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { Text, View } from 'react-native';
+import thunk from 'redux-thunk';
+import configureStore from './configureReduxStore';
+import Router from './router';
+import { getExperiences } from './actions';
+
+const middleware = [thunk];
+const store = configureStore(middleware);
+
+//Fires the action which gets our experiences from our server
+store.dispatch(getExperiences());
 
 class App extends Component {
+
+	state = {store};
 	
 	render(){
 		return (
-				<View>
-					<Text>Hello World</Text>
-				</View>
+			<Provider store={this.state.store}>
+				<Router/>
+			</Provider>
 		);
 	}
 
